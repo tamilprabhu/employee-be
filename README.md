@@ -40,3 +40,10 @@ INSERT INTO employee (id, name, email, position, department) VALUES
 (2, 'Bob', 'bob@fmail.com', 'BA', 'Marketing'),
 (3, 'Charlie', 'charlie.98@yahoo.in', 'Associate', 'HR');
 ```
+
+
+pip install langchain openai mysql-connector-python sqlalchemy
+
+pip install langchain-experimental
+
+https://github.com/datacharmer/test_db.git
