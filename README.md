@@ -29,3 +29,34 @@ mysql -uroot -proot < employees.sql
 ```bash
 python main.py
 ```
+
+## 🧪 Example: `cURL` Command
+
+```bash
+curl --location --request POST 'https://127.0.0.1:5000/query' \
+--header 'Content-Type: application/json' \
+--data '{
+    "prompt": "Who is the current manager of Customer Service department ?"
+}'
+```
+### 📥 Request Body
+
+| Field  | Type   | Description                          |
+| ------ | ------ | ------------------------------------ |
+| prompt | string | Natural language question to the API |
+
+---
+
+### 📤 Sample Response
+
+```json
+{
+    "answer": "The current manager of the Customer Service department is Jane Doe."
+}
+```
+
+## 🧪 Example: `cURL` Command
+
+```bash
+curl --location --request GET 'http://127.0.0.1:5000/employees'
+```
