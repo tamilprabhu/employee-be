@@ -4,7 +4,25 @@
 
 ```bash
 pip install flask mysql-connector-python flask_cors
+pip install langchain openai mysql-connector-python sqlalchemy
+pip install langchain-experimental
 ```
+
+# MySQL Database Setup
+
+## Clone the repository:
+
+```bash
+git clone https://github.com/datacharmer/test_db.git
+cd test_db
+```
+
+## **Login to MySQL** and run the provided SQL script:
+
+```bash
+mysql -uroot -proot < employees.sql
+```
+
 
 ## Run the Python File
 
@@ -12,31 +30,33 @@ pip install flask mysql-connector-python flask_cors
 python main.py
 ```
 
-# MySQL Database Setup
+## 🧪 Example: `cURL` Command
 
-## Create Database
+```bash
+curl --location --request POST 'https://127.0.0.1:5000/query' \
+--header 'Content-Type: application/json' \
+--data '{
+    "prompt": "Who is the current manager of Customer Service department ?"
+}'
+```
+### 📥 Request Body
 
-```sql
-CREATE DATABASE `employee`;
+| Field  | Type   | Description                          |
+| ------ | ------ | ------------------------------------ |
+| prompt | string | Natural language question to the API |
+
+---
+
+### 📤 Sample Response
+
+```json
+{
+    "answer": "The current manager of the Customer Service department is Jane Doe."
+}
 ```
 
-## Create Table
+## 🧪 Example: `cURL` Command
 
-```sql
-CREATE TABLE `employee` (
-    `id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    `name` VARCHAR(25) NOT NULL,
-    `email` VARCHAR(50) NOT NULL,
-    `position` VARCHAR(15) NOT NULL,
-    `department` VARCHAR(15) NOT NULL
-);
-```
-
-## Insert Sample Data
-
-```sql
-INSERT INTO employee (id, name, email, position, department) VALUES
-(1, 'Alice', 'alice@gmail.com', 'Software Dev', 'Engineering'),
-(2, 'Bob', 'bob@fmail.com', 'BA', 'Marketing'),
-(3, 'Charlie', 'charlie.98@yahoo.in', 'Associate', 'HR');
+```bash
+curl --location --request GET 'http://127.0.0.1:5000/employees'
 ```
